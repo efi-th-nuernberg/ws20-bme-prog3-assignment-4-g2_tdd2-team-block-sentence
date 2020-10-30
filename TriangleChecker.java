@@ -29,6 +29,7 @@ public class TriangleChecker {
   // Ausgabe der ermittelten Dreiecksart
   private static void printAnalysis(float a, float b, float c) {
     TriangleType type = checkTriangle(a, b, c);
+
     switch (type) {
       case NONE:
         System.out.println("Kein Dreieck");
@@ -41,14 +42,23 @@ public class TriangleChecker {
         break;        
       case EQUILATERAL:
         System.out.println("Gleichseitiges Dreieck");
-        break;        
+        break;            
     }
   }
 
   // Analyse der Dreiecksart
   public static TriangleType checkTriangle(float a, float b, float c) {
-    return TriangleType.NONE;
-  }
+    if (a+b > c && a+c > b && c+b > a){
+  
+      if(a == b && b==c && a==c){
+      return TriangleType.EQUILATERAL;}
 
+      if(a == b || b==c || a==c){
+        return TriangleType.ISOSCELES;}
+
+      return TriangleType.NORMAL; 
+    }
+    return TriangleType.NONE;    
+  }
 
 }
